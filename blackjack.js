@@ -21,8 +21,40 @@ const drawCard = (deck) => {
   deck.splice(randomNumber, 1);
   return deck[randomNumber];
 };
-const deck = generateDeck();
-const card = drawCard(deck);
 
-console.log(card);
-console.log(deck.length);
+const deck = generateDeck();
+
+const playerHand = [];
+const dealerHand = [];
+
+playerHand.push(drawCard(deck));
+playerHand.push(drawCard(deck));
+
+dealerHand.push(drawCard(deck));
+dealerHand.push(drawCard(deck));
+
+const checkScore = (hand) => {
+  let points = 0;
+
+  for (const cardObject of hand) {
+    console.log(cardObject);
+    switch (cardObject.card) {
+      case "Jack":
+      case "Queen":
+      case "King":
+        points += 10;
+        break;
+      case "Ace":
+        points += 1;
+        break;
+      default:
+        points += Number(cardObject.card);
+        break;
+    }
+  }
+
+  console.log(points);
+};
+
+checkScore(playerHand);
+checkScore(dealerHand);
