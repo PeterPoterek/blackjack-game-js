@@ -16,5 +16,13 @@ const generateDeck = () => {
   return deck;
 };
 
+const drawCard = (deck) => {
+  const randomNumber = Math.floor(Math.random() * deck.length);
+  deck.splice(randomNumber, 1);
+  return deck[randomNumber];
+};
 const deck = generateDeck();
-console.log(deck);
+const card = drawCard(deck);
+
+console.log(card);
+console.log(deck.length);
